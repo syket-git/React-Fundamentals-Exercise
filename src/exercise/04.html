@@ -11,10 +11,27 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+
+    const Message = ({children}) => {
+      return <div className="message">{children}</div>
+    }
+
+    const PropTypes = {
+      number(props, propName, componentName) {
+        if (typeof props[propName] !== 'number') {
+          return new Error('Some useful error message here')
+        }
+      },
+    }
+
+    Message.proptypes = {
+      children: PropTypes.number,
+    }
+
     const element = (
       <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
+        {<Message children="hello world" />}
+        {<Message children="goodbye world" />}
       </div>
     )
 
